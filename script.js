@@ -15,37 +15,58 @@ function getHumanChoice (input) {
 
 function playRound (humanChoice, computerChoice) {
 
-
     if (humanChoice == computerChoice) {
         console.log(`Draw, ${humanChoice} and ${computerChoice}.`);
-        return;
+        return "draw";
     }
-    else if (humanChoice == "rock" && computerChoice == "paper" || humanChoice == "scissors" && computerChoice == "rock" || humanChoice == "paper" && computerChoice == "scissors") {
+    else if (humanChoice == "paper" && computerChoice == "rock"  || humanChoice == "rock" && computerChoice == "scissors" || humanChoice == "scissors" && computerChoice == "paper") {
         console.log(`You win, ${humanChoice} beats ${computerChoice}`);
-        humanScore++;
-        return;
+        return "win";
     }
-    console.log(`You lost, ${computerChoice} beats ${humanChoice}.`)
-    computerScore++;
+    else {
+        console.log(`You lost, ${computerChoice} beats ${humanChoice}.`);
+        return "loss";
+    }   
 }
 
-var humanScore = 0;
-var computerScore = 0;
-console.log(`Your score is ${humanScore}, enemy score is ${computerScore}`);
+function playGame() {
+    var humanScore = 0;
+    var computerScore = 0;
+    console.log(`Game begins. Your score is ${humanScore}, enemy score is ${computerScore}`);
+    
+    for (let i = 0; i < 5; i++) {
 
-let input = prompt("rock paper scissors, type your choice fam");
+        let input = prompt("rock paper scissors, type your choice fam");
+    
+        let player = getHumanChoice(input);
+        let computer = getComputerChoice();
+    
+        if (computer == 0) {
+            computer = "rock";
+        }
+        else if (computer == 1) {
+            computer = "paper";
+        }
+        else computer = "scissors"
+    
+        let result = playRound(player, computer);
 
-let player = getHumanChoice(input);
-let computer = getComputerChoice();
+        if (result == "win") {
+            humanScore++;
+        }
+        else if (result == "loss") {
+            computerScore++;
+        }
 
-if (computer == 0) {
-    computer = "rock";
-}
-else if (computer == 1) {
-    computer = "paper";
-}
-else computer = "scissors"
+        // result = null;
 
-playRound(player, computer);
+        console.log(`Your score is ${humanScore}, enemy score is ${computerScore}`);
+    }
 
-console.log(`Your score is ${humanScore}, enemy score is ${computerScore}`);
+    console.log(`Game over. Your score is ${humanScore}, enemy score is ${computerScore}.`);
+} 
+
+playGame();
+
+
+
