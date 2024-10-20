@@ -13,9 +13,13 @@ function getHumanChoice (input) {
 }
 
 
-
 console.log(getComputerChoice());
 
-let input = prompt("rock paper scissors");
+let input = prompt("rock paper scissors, type your choice fam");
 
 console.log(getHumanChoice(input));
+
+let humanScore = 0;
+let computerScore = 0;
+
+console.log(`Your score is ${humanScore}, enemy score is ${computerScore}`);
