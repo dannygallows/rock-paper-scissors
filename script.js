@@ -13,10 +13,6 @@ function getComputerChoice() {
     else return "scissors";
 }
 
-// function updateScore() {
-
-// }
-
 function playRound (humanChoice) {
 
     let computerChoice = getComputerChoice();
@@ -33,9 +29,16 @@ function playRound (humanChoice) {
         computerScore++;
     }   
 
-    if (humanScore === 5) alert("You win!");
-    else if (computerScore === 5) alert("You lost!");
-
+    if (humanScore === 5) {
+        const result = document.createElement("p");
+        result.textContent = `You won ${humanScore} to ${computerScore}.`;
+        game.append(result);
+    }
+    else if (computerScore === 5) {
+        const result = document.createElement("p");
+        result.textContent = `You lost ${humanScore} to ${computerScore}.`;
+        game.append(result);
+    }
 }
 
 function playGame() {
