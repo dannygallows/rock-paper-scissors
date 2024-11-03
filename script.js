@@ -4,16 +4,17 @@ function getComputerChoice() {
 
 function getHumanChoice (input) {
 
-    let userInput = input.toLowerCase();
-
-    if (userInput == "rock" ) {return "rock";}
-    else if (userInput == "paper") {return "paper";}
-    else if (userInput == "scissors") {return "scissors";}
+    if (input == "rock" ) {return "rock";}
+    else if (input == "paper") {return "paper";}
+    else if (input == "scissors") {return "scissors";}
     else return "Invalid choice";
 }
 
 
-function playRound (humanChoice, computerChoice) {
+function playRound (humanChoice) {
+
+    let computerChoice = getComputerChoice();
+
 
     if (humanChoice == computerChoice) {
         console.log(`Draw, ${humanChoice} and ${computerChoice}.`);
@@ -30,36 +31,50 @@ function playRound (humanChoice, computerChoice) {
 }
 
 function playGame() {
+
     var humanScore = 0;
     var computerScore = 0;
+    var humanInput = 0;
+    let result;
+
+    const game = document.querySelector("#game");
+    const gameText = document.createElement("p")
+    
+    gameText.textContent = `Game begins. Your score is ${humanScore}, enemy score is ${computerScore}.`;
+    game.appendChild(gameText);
+
+    const rockButton = document.querySelector("#rock-button");
+    const paperButton = document.querySelector("#paper-button");
+    const scissorsButton = document.querySelector("#scissors-button");
+
+    rockButton.addEventListener("click", () => playRound(0));
+    paperButton.addEventListener("click", () => playRound(1));
+    scissorsButton.addEventListener("click", () => playRound(2));
+
     console.log(`Game begins. Your score is ${humanScore}, enemy score is ${computerScore}`);
-    
-    // for (let i = 0; i < 5; i++) {
 
-        let input = prompt("rock paper scissors, type your choice fam");
-    
-        let player = getHumanChoice(input);
-        let computer = getComputerChoice();
-    
-        if (computer == 0) {
-            computer = "rock";
-        }
-        else if (computer == 1) {
-            computer = "paper";
-        }
-        else computer = "scissors"
-    
-        let result = playRound(player, computer);
+    let player = humanInput;
+    let computer = getComputerChoice();
 
-        if (result == "win") {
-            humanScore++;
+    if (computer == 0) {
+        computer = "rock";
         }
-        else if (result == "loss") {
-            computerScore++;
-        }
+    else if (computer == 1) {
+        computer = "paper";
+    }
+    else computer = "scissors"
 
-        console.log(`Your score is ${humanScore}, enemy score is ${computerScore}`);
-    // }
+
+
+    if (result == "win") {
+        humanScore++;
+    }
+    else if (result == "loss") {
+           computerScore++;
+    }
+
+    console.log(`Your score is ${humanScore}, enemy score is ${computerScore}`);
+
 
     console.log(`Game over. Your score is ${humanScore}, enemy score is ${computerScore}.`);
 } 
