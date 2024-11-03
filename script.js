@@ -34,7 +34,7 @@ function playGame() {
     var computerScore = 0;
     console.log(`Game begins. Your score is ${humanScore}, enemy score is ${computerScore}`);
     
-    for (let i = 0; i < 5; i++) {
+    // for (let i = 0; i < 5; i++) {
 
         let input = prompt("rock paper scissors, type your choice fam");
     
@@ -58,10 +58,8 @@ function playGame() {
             computerScore++;
         }
 
-        // result = null;
-
         console.log(`Your score is ${humanScore}, enemy score is ${computerScore}`);
-    }
+    // }
 
     console.log(`Game over. Your score is ${humanScore}, enemy score is ${computerScore}.`);
 } 
