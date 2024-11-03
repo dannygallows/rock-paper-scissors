@@ -46,13 +46,19 @@ function playGame() {
     let roundCount = 1;
 
     const game = document.querySelector("#game");
+
     const gameText = document.createElement("p");
-    const gameRound = document.createElement("p")
-    
     gameText.textContent = `Game of Rock, Paper and Scissors begins.`;
-    gameRound.textContent = `Round ${roundCount}`
+
+    const gameRound = document.createElement("p");
+    gameRound.textContent = `Round ${roundCount}`;
+
+    const gameScore = document.createElement("p");
+    gameScore.textContent = ` You : ${humanScore} Computer : ${computerScore}`;
+    
     game.appendChild(gameText);
-    game.append(gameRound);
+    game.append(gameRound); 
+    game.append(gameScore);
 
     const rockButton = document.querySelector("#rock-button");
     const paperButton = document.querySelector("#paper-button");
@@ -62,18 +68,21 @@ function playGame() {
         playRound("rock"); 
         roundCount++; 
         gameRound.textContent = `Round ${roundCount}`;
+        gameScore.textContent = ` You : ${humanScore} Computer : ${computerScore}`;
     });
     
     paperButton.addEventListener("click", () => {
         playRound("paper"); 
         roundCount++; 
         gameRound.textContent = `Round ${roundCount}`
+        gameScore.textContent = ` You : ${humanScore} Computer : ${computerScore}`;
     });
     
     scissorsButton.addEventListener("click", () => {
         playRound("scissors"); 
         roundCount++;  
         gameRound.textContent = `Round ${roundCount}`
+        gameScore.textContent = ` You : ${humanScore} Computer : ${computerScore}`;
     }); 
 } 
 
